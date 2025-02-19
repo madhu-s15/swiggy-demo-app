@@ -2,7 +2,7 @@
   "name": "namaste_react1",
   "version": "1.0.0",
   "description": "This is a swiggy demo app by Madhu",
-  "main": "index.js",
+  "main": "App.js",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
@@ -23,7 +23,9 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.7"
   }
 }
