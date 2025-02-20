@@ -68,7 +68,7 @@ export const resList = [
                   cuisines: ["Pizzas"],
                   avgRating: 4.2,
                   parentId: "721",
-                  avgRatingString: "4.2",
+                  avgRatingString: "3.8",
                   totalRatingsString: "1.6K+",
                   sla: {
                     deliveryTime: 35,
