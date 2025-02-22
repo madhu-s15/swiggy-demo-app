@@ -1,12 +1,17 @@
-import RestroCard from "./RestroCard";
+import RestroCard, { withPromotedLabel } from "./RestroCard";
 import { resList } from "../utils/mockData";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router";
+import userContext from "../utils/userContext";
 
-const Body = () => {
+const Body = (props) => {
   const resData =
     resList[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
   const [listOfRestaurant, setListOfRestaurant] = React.useState(resData);
   const [searchText, setSearchText] = React.useState("");
+  const RestaurantWithPromoted = withPromotedLabel(RestroCard);
+  const user = useContext(userContext);
+  console.log("check");
 
   return (
     <div>
@@ -40,10 +45,20 @@ const Body = () => {
         >
           Top Rated Restaurant
         </button>
+        <input
+          className="border-2 h-8 m-4 p-2"
+          onChange={(e) => user.setUserName(e.target.value)}
+        ></input>
       </div>
       <div id="body" className="flex flex-wrap">
         {listOfRestaurant.map((data) => (
-          <RestroCard key={data.info.id} resData={data} />
+          <Link to={"/restaurant/" + data.info.id} key={data.info.id}>
+            {data.info?.promoted ? (
+              <RestaurantWithPromoted resData={data} />
+            ) : (
+              <RestroCard resData={data} />
+            )}
+          </Link>
         ))}
       </div>
     </div>

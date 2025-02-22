@@ -66,6 +66,7 @@ export const resList = [
                   areaName: "Triplicane",
                   costForTwo: "₹350 for two",
                   cuisines: ["Pizzas"],
+                  promoted: true,
                   avgRating: 4.2,
                   parentId: "721",
                   avgRatingString: "3.8",
@@ -314,6 +315,7 @@ export const resList = [
                   cloudinaryImageId: "1d578bb732e03c6f591790eb7d2d88e2",
                   locality: "Manickam road",
                   areaName: "Annanagar",
+                  promoted: true,
                   costForTwo: "₹250 for two",
                   cuisines: [
                     "North Indian",
@@ -674,6 +676,7 @@ export const resList = [
                     "RX_THUMBNAIL/IMAGES/VENDOR/2024/6/11/7f76a072-c1bc-4d74-ac56-33e0eea20c1e_11479.JPG",
                   locality: "Express Avenue",
                   areaName: "Thousand Lights",
+                  promoted: true,
                   costForTwo: "₹350 for two",
                   cuisines: ["Burgers", "American"],
                   avgRating: 4.2,

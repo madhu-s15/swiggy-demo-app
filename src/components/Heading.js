@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CDN_UR } from "../utils/constanst";
 import { Link } from "react-router";
+import useOnlinestatus from "../utils/useOnlineStatus";
+import userContext from "../utils/userContext";
 
 const Heading = () => {
   const [loginBtn, setLoginBtn] = useState("Login");
+
+  const userName = useContext(userContext);
+  console.log(userName);
 
   return (
     <div className="flex justify-between bg-gray-300 ">
@@ -12,6 +17,7 @@ const Heading = () => {
       </div>
       <div className="nav-bar">
         <ul className="flex p-4 m-4">
+          <li className="p-4">{useOnlinestatus ? "✅" : "🔴"}</li>
           <li className="p-4">
             <Link to="/">Home</Link>
           </li>
@@ -34,6 +40,7 @@ const Heading = () => {
               {loginBtn}
             </button>
           </li>
+          <li className="p-4">{userName.firstName}</li>
         </ul>
       </div>
     </div>
