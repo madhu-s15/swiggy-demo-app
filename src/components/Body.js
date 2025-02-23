@@ -3,15 +3,17 @@ import { resList } from "../utils/mockData";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router";
 import userContext from "../utils/userContext";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
-const Body = (props) => {
+const Body = () => {
   const resData =
     resList[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
   const [listOfRestaurant, setListOfRestaurant] = React.useState(resData);
   const [searchText, setSearchText] = React.useState("");
   const RestaurantWithPromoted = withPromotedLabel(RestroCard);
   const user = useContext(userContext);
-  console.log("check");
+  const disp = useDispatch();
 
   return (
     <div>
@@ -52,7 +54,11 @@ const Body = (props) => {
       </div>
       <div id="body" className="flex flex-wrap">
         {listOfRestaurant.map((data) => (
-          <Link to={"/restaurant/" + data.info.id} key={data.info.id}>
+          <Link
+            to={"/restaurant/" + data.info.id}
+            key={data.info.id}
+            onClick={() => disp(addItem(data.info.name))}
+          >
             {data.info?.promoted ? (
               <RestaurantWithPromoted resData={data} />
             ) : (

@@ -8,6 +8,8 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import AboutClass from "./components/AboutClass";
 import userContext from "./utils/userContext";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const fetchData = async () => {
   try {
@@ -43,13 +45,15 @@ const App = () => {
 
   return (
     <div id="app">
-      <userContext.Provider
-        value={{ firstName: userName, secondName: "Susi", setUserName }}
-      >
-        <Heading />
+      <Provider store={appStore}>
+        <userContext.Provider
+          value={{ firstName: userName, secondName: "Susi", setUserName }}
+        >
+          <Heading />
 
-        <Outlet />
-      </userContext.Provider>
+          <Outlet />
+        </userContext.Provider>
+      </Provider>
     </div>
   );
 };
@@ -62,13 +66,13 @@ const appRoute = (
         <Route
           path="/about"
           element={
-            // <userContext.Provider
-            //   value={{ firstName: "Thangamani", secondName: "Susi" }}
-            // >
-            <Suspense fallback={<h1>Loadding....</h1>}>
-              <AboutClass />
-            </Suspense>
-            // </userContext.Provider>
+            <userContext.Provider
+              value={{ firstName: "Thangamani", secondName: "Susi" }}
+            >
+              <Suspense fallback={<h1>Loadding....</h1>}>
+                <AboutClass />
+              </Suspense>
+            </userContext.Provider>
           }
         />
         <Route path="/contact" element={<Contact />} />
